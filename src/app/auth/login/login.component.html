@@ -6,26 +6,27 @@
     <div class="login__body">
       <div class="login__body__item">
         <ion-input
-          width="20"
+          [(ngModel)]="email"
           class="custom"
           fill="outline"
           placeholder="Email"
+          autocomplete="new-email"
+          type="email"
         ></ion-input>
       </div>
       <div class="login__body__item">
         <ion-input
-          width="20"
+          [(ngModel)]="password"
+          type="password"
+          autocomplete="new-password"
           class="custom"
           fill="outline"
           placeholder="Password"
         ></ion-input>
       </div>
       <div class="login__body__item">
-        <ion-button expand="block">Login</ion-button>
+        <ion-button (click)="onLogin()" expand="block">Login</ion-button>
       </div>
-      <!-- <div class="login__body__item">2</div>
-        <div class="login__body__item">3</div>
-        <div class="login__body__item">4</div> -->
     </div>
   </div>
 </ion-content>
