@@ -1,4 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Friends List</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
+  <div class="friends-list">
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of friends">
+        <ion-item>
+          <div class="item">
+            <span>{{ item.name }}</span>
+            <div class="score">
+              <div (click)="onLike(item)" class="score__item">
+                <span>{{ item.like }}</span>
+                <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+              </div>
+              <div (click)="onDislike(item)" class="score__item">
+                <span>{{ item.dislike }}</span>
+                <ion-icon
+                  slot="icon-only"
+                  name="heart-dislike-outline"
+                ></ion-icon>
+              </div>
+            </div>
+          </div>
+        </ion-item>
 
-    <div (click)="onLogout()" class="test">test</div>
+        <ion-item-options>
+          <ion-item-option (click)="onLike(item)" class="action">
+            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+          </ion-item-option>
+          <ion-item-option (click)="onDislike(item)" class="action">
+            <ion-icon slot="icon-only" name="heart-dislike-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onLogout()">
+        <ion-icon
+          class="logout-icon"
+          slot="icon-only"
+          name="log-in-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openModal()">
+        <ion-icon
+          class="add-icon"
+          slot="icon-only"
+          name="add-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

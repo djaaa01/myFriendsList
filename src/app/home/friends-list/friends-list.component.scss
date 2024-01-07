@@ -1,0 +1,53 @@
+ion-title {
+  text-align: center;
+}
+
+.friends-list {
+  margin: 20px;
+}
+
+ion-list {
+  border-radius: 20px;
+  padding: unset;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+
+  .score {
+    display: flex;
+    gap: 5px;
+
+    &__item {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.action {
+  background-color: #ff5a22;
+}
+
+ion-item {
+  --padding-end: 0px;
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
+}
+
+.add-icon {
+  color: #ff5a22;
+}
+
+.logout-icon {
+  color: white;
+}

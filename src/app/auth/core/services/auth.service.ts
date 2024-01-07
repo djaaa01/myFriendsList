@@ -4,6 +4,7 @@ import {
   Auth,
   signInWithEmailAndPassword,
   UserCredential,
+  User as FirebaseUser,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class AuthService {
 
   login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.fireAuth, email, password);
+  }
+
+  getCurrentUse(): FirebaseUser | null {
+    return this.fireAuth.currentUser;
   }
 
   async logout() {
