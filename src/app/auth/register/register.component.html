@@ -1,3 +1,47 @@
-<p>
-  register works!
-</p>
+<ion-content [fullscreen]="true">
+  <div class="register">
+    <div class="register__title">
+      <span>Register</span>
+    </div>
+    <div class="register__body">
+      <div class="register__body__item">
+        <ion-input
+          [(ngModel)]="email"
+          fill="outline"
+          placeholder="Email"
+          autocomplete="new-email"
+          type="email"
+        ></ion-input>
+      </div>
+      <div class="register__body__item">
+        <ion-input
+          [(ngModel)]="password"
+          type="password"
+          autocomplete="new-password"
+          fill="outline"
+          placeholder="Password"
+        ></ion-input>
+      </div>
+      <div class="register__body__item">
+        <ion-input
+          [(ngModel)]="repeatPassword"
+          type="password"
+          autocomplete="new-password"
+          fill="outline"
+          placeholder="Repeat Password"
+        ></ion-input>
+      </div>
+      <div class="register__body__item">
+        <ion-button (click)="onRegister()" expand="block">Register</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-toast
+  color="danger"
+  [isOpen]="isToastOpen"
+  [message]="message"
+  [duration]="5000"
+  (didDismiss)="setOpen(false)"
+></ion-toast>

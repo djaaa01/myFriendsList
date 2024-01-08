@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
+  Auth,
+  UserCredential,
+  createUserWithEmailAndPassword,
+} from '@angular/fire/auth';
+import {
   Firestore,
   addDoc,
   collection,
@@ -18,7 +23,11 @@ import { AuthService } from 'src/app/auth/core/services/auth.service';
   providedIn: 'root',
 })
 export class MainService {
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  constructor(
+    private fireAuth: Auth,
+    private firestore: Firestore,
+    private authService: AuthService
+  ) {}
   currentUser = this.authService.getCurrentUse()?.uid;
 
   async addCollentionData<T>(
@@ -33,6 +42,10 @@ export class MainService {
   update<T>(data: any, collectionName: string): Promise<void> {
     const collectionRef = doc(this.firestore, `${collectionName}/${data.id}`);
     return setDoc(collectionRef, Object.assign({}, data));
+  }
+
+  register(email: string, password: string): Promise<UserCredential> {
+    return createUserWithEmailAndPassword(this.fireAuth, email, password);
   }
 
   getCollention<T>(collectionName: string): Observable<T[]> {
