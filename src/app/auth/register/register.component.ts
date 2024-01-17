@@ -18,6 +18,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
+  onLogin(): void {
+    this.router.navigate(['/auth']);
+  }
+
   onRegister(): void {
     if (this.password === this.repeatPassword) {
       this.mainService.register(this.email, this.password).then(

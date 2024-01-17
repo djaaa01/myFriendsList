@@ -11,27 +11,26 @@
           <div class="item">
             <span>{{ item.name }}</span>
             <div class="score">
-              <div (click)="onLike(item)" class="score__item">
+              <div (click)="onLike(item)" class="score__item ion-activatable ripple-parent">
                 <span>{{ item.like }}</span>
                 <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
               </div>
-              <div (click)="onDislike(item)" class="score__item">
+              <div (click)="onDislike(item)" class="score__item ion-activatable ripple-parent">
                 <span>{{ item.dislike }}</span>
                 <ion-icon
                   slot="icon-only"
                   name="heart-dislike-outline"
                 ></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
               </div>
             </div>
           </div>
         </ion-item>
 
         <ion-item-options>
-          <ion-item-option (click)="onLike(item)" class="action">
-            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-          </ion-item-option>
-          <ion-item-option (click)="onDislike(item)" class="action">
-            <ion-icon slot="icon-only" name="heart-dislike-outline"></ion-icon>
+          <ion-item-option (click)="onEdit(item)" class="action">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>

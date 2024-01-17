@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Edit Friend</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div [formGroup]="friendForm" class="edit-friend">
+    <div class="edit-friend__item">
+      <ion-input
+        formControlName="name"
+        fill="outline"
+        placeholder="Name"
+      ></ion-input>
+    </div>
+    <div class="edit-friend__item">
+      <div class="edit-friend__item__wrapper">
+        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+        <ion-input
+          formControlName="like"
+          fill="outline"
+          placeholder="Like"
+          type="number"
+        ></ion-input>
+      </div>
+      <div class="edit-friend__item__wrapper">
+        <ion-icon slot="icon-only" name="heart-dislike-outline"></ion-icon>
+        <ion-input
+          formControlName="dislike"
+          fill="outline"
+          placeholder="Dislike"
+          type="number"
+        ></ion-input>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-toast
+  color="danger"
+  [isOpen]="isToastOpen"
+  [message]="message"
+  [duration]="5000"
+  (didDismiss)="setOpen(false)"
+></ion-toast>

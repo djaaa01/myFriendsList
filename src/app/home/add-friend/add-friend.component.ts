@@ -21,7 +21,6 @@ export class AddFriendComponent implements OnInit {
     if (this.name) {
       return this.modalCtrl.dismiss(this.name, 'confirm');
     }
-
     return;
   }
 }

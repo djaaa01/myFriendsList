@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/core/services/auth.service';
 import { MainService } from '../core/services/main.service';
 import { ModalController } from '@ionic/angular';
 import { AddFriendComponent } from '../add-friend/add-friend.component';
+import { EditFriendComponent } from '../edit-friend/edit-friend.component';
 
 @Component({
   selector: 'app-friends-list',
@@ -27,6 +28,20 @@ export class FriendsListComponent implements OnInit {
     });
   }
 
+  async onEdit(friend: any) {
+    const modal = await this.modalCtrl.create({
+      component: EditFriendComponent,
+      componentProps: friend,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.mainService.update(data, 'friends').then((response) => {});
+    }
+  }
+
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: AddFriendComponent,
@@ -44,9 +59,7 @@ export class FriendsListComponent implements OnInit {
           name: data,
           userUID: this.authService.getCurrentUse()?.uid,
         })
-        .then((response) => {
-          console.log(response);
-        });
+        .then((response) => {});
     }
   }
 

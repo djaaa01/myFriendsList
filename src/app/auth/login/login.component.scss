@@ -12,6 +12,16 @@
 
   &__title {
     font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    img {
+      width: 24px;
+      height: auto;
+    }
   }
 
   &__body {
@@ -19,6 +29,14 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 5px;
+    }
   }
 }
 
@@ -27,7 +45,7 @@
 }
 
 ion-button {
-  --background: #ff5a22;
+  width: 100%;
   min-height: unset;
   height: 48px;
 }
