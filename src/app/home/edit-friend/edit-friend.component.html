@@ -20,23 +20,30 @@
     </div>
     <div class="edit-friend__item">
       <div class="edit-friend__item__wrapper">
-        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
         <ion-input
           formControlName="like"
           fill="outline"
           placeholder="Like"
           type="number"
+        >
+          <ion-icon slot="start" name="heart-outline"></ion-icon
         ></ion-input>
       </div>
       <div class="edit-friend__item__wrapper">
-        <ion-icon slot="icon-only" name="heart-dislike-outline"></ion-icon>
         <ion-input
           formControlName="dislike"
           fill="outline"
           placeholder="Dislike"
           type="number"
+        >
+          <ion-icon slot="start" name="heart-dislike-outline"></ion-icon
         ></ion-input>
       </div>
+    </div>
+    <div class="edit-friend__item">
+      <ion-checkbox formControlName="isFavourite" label-placement="end"
+        >Is Favourite</ion-checkbox
+      >
     </div>
   </div>
 </ion-content>

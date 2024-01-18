@@ -21,12 +21,12 @@ export class EditFriendComponent implements OnInit {
 
   ngOnInit() {
     this.friend = this.navParams.data;
-    console.table(this.friend);
 
     this.friendForm = this.fb.group({
       name: [this.friend.name, [Validators.required]],
       like: [this.friend.like, [Validators.required]],
       dislike: [this.friend.dislike, [Validators.required]],
+      isFavourite: [this.friend?.isFavourite, [Validators.required]],
     });
   }
 
@@ -39,6 +39,8 @@ export class EditFriendComponent implements OnInit {
       this.friend.name = this.friendForm.value.name;
       this.friend.like = this.friendForm.value.like;
       this.friend.dislike = this.friendForm.value.dislike;
+      this.friend.isFavourite = this.friendForm.value.isFavourite;
+
       delete this.friend.modal;
 
       return this.modalCtrl.dismiss(this.friend, 'confirm');

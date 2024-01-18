@@ -4,38 +4,84 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="friends-list">
-    <ion-list>
-      <ion-item-sliding *ngFor="let item of friends">
-        <ion-item>
-          <div class="item">
-            <span>{{ item.name }}</span>
-            <div class="score">
-              <div (click)="onLike(item)" class="score__item ion-activatable ripple-parent">
-                <span>{{ item.like }}</span>
-                <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
-              </div>
-              <div (click)="onDislike(item)" class="score__item ion-activatable ripple-parent">
-                <span>{{ item.dislike }}</span>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <div class="friends-item--search">
+          <ion-row>
+            <ion-col>
+              <ion-searchbar
+                color="dark"
+                placeholder="Search"
+                [debounce]="200"
+                (ionInput)="handleInput($event)"
+              ></ion-searchbar>
+            </ion-col>
+            <!-- <ion-col size="auto">
+              <div class="filter ion-activatable ripple-parent">
                 <ion-icon
-                  slot="icon-only"
-                  name="heart-dislike-outline"
+                  class="primary-color"
+                  name="filter-outline"
                 ></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
-              </div>
-            </div>
-          </div>
-        </ion-item>
+                <ion-ripple-effect></ion-ripple-effect></div
+            ></ion-col> -->
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <div class="friends-item">
+          <ion-list>
+            <ion-item-sliding *ngFor="let item of result">
+              <ion-item>
+                <div class="item">
+                  <span>{{ item.name }}</span>
+                  <div class="score">
+                    <div
+                      (click)="onLike(item)"
+                      class="score__item ion-activatable ripple-parent"
+                    >
+                      <span>{{ item.like }}</span>
+                      <ion-icon
+                        *ngIf="!item?.isFavourite"
+                        slot="icon-only"
+                        [name]="item?.isFavourite ? 'heart' : 'heart-outline'"
+                      ></ion-icon>
+                      <ion-icon
+                        *ngIf="item?.isFavourite"
+                        class="primary-color"
+                        slot="icon-only"
+                        name="heart"
+                      ></ion-icon>
+                      <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                    <div
+                      (click)="onDislike(item)"
+                      class="score__item ion-activatable ripple-parent"
+                    >
+                      <span>{{ item.dislike }}</span>
+                      <ion-icon
+                        slot="icon-only"
+                        name="heart-dislike-outline"
+                      ></ion-icon>
+                      <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                  </div>
+                </div>
+              </ion-item>
 
-        <ion-item-options>
-          <ion-item-option (click)="onEdit(item)" class="action">
-            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-  </div>
+              <ion-item-options>
+                <ion-item-option (click)="onEdit(item)" class="action">
+                  <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer class="ion-no-border">
@@ -52,7 +98,7 @@
     <ion-buttons slot="end">
       <ion-button (click)="openModal()">
         <ion-icon
-          class="add-icon"
+          class="primary-color"
           slot="icon-only"
           name="add-outline"
         ></ion-icon>

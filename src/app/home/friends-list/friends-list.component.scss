@@ -2,10 +2,6 @@ ion-title {
   text-align: center;
 }
 
-.friends-list {
-  margin: 20px;
-}
-
 ion-list {
   border-radius: 20px;
   padding: unset;
@@ -49,7 +45,7 @@ ion-item {
   --padding-start: 0px;
 }
 
-.add-icon {
+.primary-color {
   color: #ff5a22;
 }
 
@@ -61,12 +57,42 @@ ion-item {
   display: flex;
   align-items: center;
   justify-content: center;
-
   position: relative;
   overflow: hidden;
-
-  // border: 1px solid #ddd;
-
   user-select: none;
   padding: 0 5px;
+}
+
+.filter {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 10px;
+}
+
+ion-grid {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+ion-searchbar {
+  border: 20px;
+}
+
+ion-searchbar,
+ion-col {
+  padding: 0;
+}
+
+::ng-deep {
+  .searchbar-search-icon {
+    fill: #ff5a22;
+  }
+  .ion-color.sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md {
+    border-radius: 20px;
+  }
 }

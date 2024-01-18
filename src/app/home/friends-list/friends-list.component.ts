@@ -12,6 +12,7 @@ import { EditFriendComponent } from '../edit-friend/edit-friend.component';
 })
 export class FriendsListComponent implements OnInit {
   friends: Array<any> = [];
+  result: Array<any> = [];
 
   constructor(
     private authService: AuthService,
@@ -22,7 +23,7 @@ export class FriendsListComponent implements OnInit {
   ngOnInit() {
     this.mainService.getCollention<any>('friends').subscribe((response) => {
       this.friends = response;
-      this.friends.sort(function (a, b) {
+      this.result = this.friends.sort(function (a, b) {
         return b.createdDate - a.createdDate;
       });
     });
@@ -71,6 +72,13 @@ export class FriendsListComponent implements OnInit {
   onDislike(event: any) {
     event.dislike += 1;
     this.mainService.update(event, 'friends').then((response) => {});
+  }
+
+  handleInput(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.result = this.friends.filter(
+      (d) => d.name.toLowerCase().indexOf(query) > -1
+    );
   }
 
   onLogout(): void {
